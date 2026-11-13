@@ -14,11 +14,13 @@ public class SimMontyMain {
          int countRuns = 0;
          myWinTotal = 0;
          //you write this...
-        //  while(){
-             
-        //  }
+         SimMonty wolfFam = new SimMonty();
+         while(countRuns < numGames){
+             myWinTotal+=wolfFam.playGame();
+             countRuns++;
+         }
          //stop here...
-         System.out.println((myWinTotal * 1.0)/numGames);
+         System.out.println((myWinTotal * 1.0)/(numGames*3));
     }
     
     

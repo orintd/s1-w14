@@ -18,12 +18,15 @@ public class SimMonty {
         int doorWithCar;
         int firstChoice, secondChoice;
         int goatDoor;
-        
-        doorWithCar = gameStart ( );
-        firstChoice = playerGuess ( );
-        goatDoor = tempt (doorWithCar, firstChoice);
-        secondChoice = newGuess (goatDoor, firstChoice);
-        return gameResult (doorWithCar, goatDoor, secondChoice);
+        int k = 0;
+        for(int i = 0; i < 3; i++){
+            doorWithCar = gameStart ( );
+            firstChoice = playerGuess ( );
+            goatDoor = tempt (doorWithCar, firstChoice);
+            secondChoice = newGuess (goatDoor, firstChoice, i);
+            k+= gameResult (doorWithCar, goatDoor, secondChoice);
+        }
+        return k; 
     }
     
     // Set up the game, returning the position of the car (chosen randomly).
@@ -70,9 +73,9 @@ public class SimMonty {
     
     // The contestant decides on a second guess, aided (?) by knowing that the given
     // door has a goat.  Return the updated guess.
-    private int newGuess (int goatDoor, int firstChoice) {
+    private int newGuess (int goatDoor, int firstChoice, int s) {
         int guess;
-        guess = player.guess2 (goatDoor);
+        guess = player.guess2 (goatDoor, s);
         return guess;
     }
     
